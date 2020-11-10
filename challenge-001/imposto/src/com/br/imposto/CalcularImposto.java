@@ -89,15 +89,16 @@ public class CalcularImposto {
 		System.out.print("Salário Bruto: ");
 		salarioBruto = input.nextDouble();
 
-		System.out.print("\nQuantidade de dependentes: ");
+		System.out.print("Quantidade de dependentes: ");
 		quantidadeDependentes = input.nextInt();
 
-		System.out.print("\nPossui outras despesas?" + "\nDigite 1 (sim) ou 2 (não): ");
+		System.out.print("Possui outras despesas? (Digite 1. Sim ou 2. Não) ");
 		despesa = input.nextInt();
 
 		while (despesa != 1 && despesa != 2) {
-			System.out.print("\nDigite 1 (sim) ou 2 (não): ");
+			System.out.print("Digite 1. Sim ou 2. Não: ");
 			despesa = input.nextInt();
+//			despesa += 0;
 		}
 
 		deducao = 0.0;
@@ -106,36 +107,38 @@ public class CalcularImposto {
 			System.out.print("Valor da dedução: ");
 			deducao = input.nextDouble();
 		} else {
-			System.out.print("Valor da dedução: " + deducao);
+			System.out.println("Valor da dedução: " + deducao);
 		}
+		
+		System.out.println("\nOutras dispesas: R$ " + deducao);
 	}
 
 	public void calcularDependentes() {
 		valorDependentes = 179.71;
 
 		if (quantidadeDependentes == 1) {
-			System.out.println("\nValor a ser deduzido dos dependentes: R$ " + valorDependentes);
+			System.out.println("Valor a ser deduzido dos dependentes: R$ " + valorDependentes);
 		} else {
 			deducaoDependentes = quantidadeDependentes * valorDependentes;
-			System.out.println("\nValor a ser deduzido dos dependentes: R$ " + deducaoDependentes);
+			System.out.println("Valor a ser deduzido dos dependentes: R$ " + deducaoDependentes);
 		}
 	}
 
 	public void calcularInss() {
 		if (salarioBruto <= 1045.00) {
-			System.out.println("\nValor a ser deduzido do INSS: Insento.");
+			System.out.println("Valor a ser deduzido do INSS: Insento.");
 		} else if (salarioBruto > 1045.00 && salarioBruto < 2089.60) {
 			aliquotaInss = 9.0 / 100;
 			deducaoInss = (aliquotaInss * salarioBruto) - 15.675;
-			System.out.println("\nValor a ser deduzido do INSS: R$ " + deducaoInss);
+			System.out.println("Valor a ser deduzido do INSS: " + deducaoInss);
 		} else if (salarioBruto > 2089.60 && salarioBruto < 3134.40) {
 			aliquotaInss = 12.0 / 100;
 			deducaoInss = (aliquotaInss * salarioBruto) - 78.363;
-			System.out.println("\nValor a ser deduzido do INSS: R$ " + deducaoInss);
+			System.out.println("Valor a ser deduzido do INSS: R$ " + deducaoInss);
 		} else {
 			aliquotaInss = 14.0 / 100;
 			deducaoInss = (aliquotaInss * salarioBruto) - 141.051;
-			System.out.println("\nValor a ser deduzido do INSS: R$ " + deducaoInss);
+			System.out.println("Valor a ser deduzido do INSS: R$ " + deducaoInss);
 		}
 	}
 
@@ -143,23 +146,23 @@ public class CalcularImposto {
 		salarioLiquido = (salarioBruto - deducaoDependentes - deducaoInss - deducao);
 
 		if (salarioLiquido <= 1903.98) {
-			System.out.println("\nValor a ser deduzido do IRPF: Insento");
+			System.out.println("Valor a ser deduzido do IRPF: Insento");
 		} else if (salarioLiquido > 1903.98 && salarioLiquido < 2826.65) {
 			aliquotaIrpf = 7.5 / 100;
 			deducaoIrpf = (salarioLiquido * aliquotaIrpf) - 142.80;
-			System.out.println("\nValor a ser deduzido do IRPF: R$ " + deducaoIrpf);
+			System.out.println("Valor a ser deduzido do IRPF: R$ " + deducaoIrpf);
 		} else if (salarioLiquido > 2826.65 && salarioLiquido < 3751.05) {
 			aliquotaIrpf = 15.0 / 100;
 			deducaoIrpf = (salarioLiquido * aliquotaIrpf) - 354.80;
-			System.out.println("\nValor a ser deduzido do IRPF: R$ " + deducaoIrpf);
+			System.out.println("Valor a ser deduzido do IRPF: R$ " + deducaoIrpf);
 		} else if (salarioLiquido > 3751.05 && salarioLiquido < 4664.68) {
 			aliquotaIrpf = 22.5 / 100;
 			deducaoIrpf = (salarioLiquido * aliquotaIrpf) - 636.13;
-			System.out.println("\nValor a ser deduzido do IRPF: R$ " + deducaoIrpf);
+			System.out.println("Valor a ser deduzido do IRPF: R$ " + deducaoIrpf);
 		} else {
 			aliquotaIrpf = 27.5 / 100;
 			deducaoIrpf = (salarioLiquido * aliquotaIrpf) - 839.36;
-			System.out.println("\nValor a ser deduzido do IRPF: R$ " + deducaoIrpf);
+			System.out.println("Valor a ser deduzido do IRPF: R$ " + deducaoIrpf);
 		}
 	}
 
